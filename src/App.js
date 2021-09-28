@@ -18,18 +18,6 @@ function App() {
   }
 
   useEffect(() => {
-    shuffleCards();
-  }, [])
-
-  useEffect(() => {
-    
-    if(shuffleDeck.length >= 54) {
-      console.log(shuffleDeck);
-      setShowCards(true);
-    }
-  }, [shuffleDeck]);
-
-  const shuffleCards = () => {
     let shuffle = [];
     let copyCards = [...cards];
     for(let i=0; i<54; i++){
@@ -37,7 +25,15 @@ function App() {
       shuffle.push(copyCards.splice(getRandom(copyCards.length), 1)[0]);
     }
     setShuffleDeck([...shuffle]);
-  }
+  }, []);
+
+  useEffect(() => {
+    if(shuffleDeck.length >= 54) {
+      console.log(shuffleDeck);
+      setShowCards(true);
+    }
+
+  }, [shuffleDeck]);
 
   return (
     <div className="App">
