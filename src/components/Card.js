@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import cover from '../imgs/backcard.jpg';
 
 const CardContainer =  styled.div`
   width: 90%;
-  background: gray;
   height: 100vh;
   margin: auto;
   display: flex;
@@ -12,21 +12,49 @@ const CardContainer =  styled.div`
   @media (min-width: 769px) {
     width: 500px;
   }
+  transition: 1s ease-in-out;
+  transform-style: preserve-3d;
+  perspective: 600px;
+  transform: ${(props) => props.trans || ''};
 `;
 
 const CardContent = styled.div`
-  background: yellow;
-  border: 20px solid white;
+  position: relative;
+  border: 26px solid white;
   width: 100%;
   height: 70%;
   border-radius: 25px;
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+`;
+
+const FrontContent = styled.div`
+  position: absolute;
+  transform: rotateY(180deg);
+  background-color: yellow;
+  width: 100%;
+  height: 100%;
+  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `;
 
+const BackContent = styled.div`
+  position: absolute;
+  background-image: url(${cover});
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+`;
+
 const CardText = styled.p`
+transition: 1s ease-in-out;
+  letter-spacing: 1px;
   margin: 0;
   font-size: 36px;
   font-weight: 700;
@@ -36,11 +64,30 @@ const CardText = styled.p`
 
 
 const Card = ({ number, name, next }) => {
+
+  const [activate, setActivate] = useState('');
+
+  const flipCard = () => {
+    console.log('activando')
+    setActivate('rotateY(180deg)');
+  }
+
   return (
-    <CardContainer>
-      <CardContent onClick={() => next()}>
-        <CardText align="left">{number}</CardText>
-        <CardText align="center">{name}</CardText>
+    <CardContainer trans={activate}>
+      <CardContent 
+        onClick={() => 
+          {
+            flipCard();
+            next();
+            
+          }
+        }
+      >
+        <BackContent></BackContent>
+        <FrontContent>
+          <CardText>{number}</CardText>
+          <CardText align="center">{name}</CardText>
+        </FrontContent>
       </CardContent>
     </CardContainer>
   )

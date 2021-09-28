@@ -8,9 +8,14 @@ function App() {
   const [arrayIndex, setArrayIndex] = useState(0);
   const [shuffleDeck, setShuffleDeck] = useState([]);
   const [showCards, setShowCards] = useState(false);
+
+
   const updateCard = () => {
-    console.log('actualizando a: ', arrayIndex + 1)
-    setArrayIndex(Number(arrayIndex) + 1);
+    console.log('actualizando a: ', arrayIndex + 1);
+    if(arrayIndex <= 52)
+      setArrayIndex(Number(arrayIndex) + 1);
+    else
+      setShowCards(false);
   }
 
   const getRandom = (cardsRemaining) => {
@@ -39,14 +44,12 @@ function App() {
     <div className="App">
       {showCards 
         ? <Card
-        number={shuffleDeck[arrayIndex].number}
-        name={shuffleDeck[arrayIndex].name} 
-        next={updateCard}  
-      /> 
-      : null
-      
-    }
-      
+            number={shuffleDeck[arrayIndex].number}
+            name={shuffleDeck[arrayIndex].name} 
+            next={updateCard}  
+          /> 
+        : null
+      }      
     </div>
   );
 }
