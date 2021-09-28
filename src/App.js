@@ -1,23 +1,56 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState, useEffect} from 'react';
+import Card from './components/Card';
+import cards from './data'
 
 function App() {
+
+  const [arrayIndex, setArrayIndex] = useState(0);
+  const [shuffleDeck, setShuffleDeck] = useState([]);
+  const [showCards, setShowCards] = useState(false);
+  const updateCard = () => {
+    console.log('actualizando a: ', arrayIndex + 1)
+    setArrayIndex(Number(arrayIndex) + 1);
+  }
+
+  const getRandom = (cardsRemaining) => {
+    return Math.trunc(Math.random() * cardsRemaining - 1);
+  }
+
+  useEffect(() => {
+    shuffleCards();
+  }, [])
+
+  useEffect(() => {
+    
+    if(shuffleDeck.length >= 54) {
+      console.log(shuffleDeck);
+      setShowCards(true);
+    }
+  }, [shuffleDeck]);
+
+  const shuffleCards = () => {
+    let shuffle = [];
+    let copyCards = [...cards];
+    for(let i=0; i<54; i++){
+      console.log('agregando carta')
+      shuffle.push(copyCards.splice(getRandom(copyCards.length), 1)[0]);
+    }
+    setShuffleDeck([...shuffle]);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {showCards 
+        ? <Card
+        number={shuffleDeck[arrayIndex].number}
+        name={shuffleDeck[arrayIndex].name} 
+        next={updateCard}  
+      /> 
+      : null
+      
+    }
+      
     </div>
   );
 }
