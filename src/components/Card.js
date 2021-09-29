@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import styled from 'styled-components';
 import cover from '../imgs/backcard.jpg';
 
@@ -75,8 +74,8 @@ const Card = ({ number, name, next, used }) => {
   }*/
 
   return (
-    <CardContainer trans={activate}>
-      <CardContent anim={anim}
+    <CardContainer >
+      <CardContent 
         onClick={() => 
           {
             next();
