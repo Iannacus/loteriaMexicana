@@ -65,8 +65,8 @@ const CardText = styled.p`
 
 const Card = ({ number, name, next, used }) => {
 
-  const [activate, setActivate] = useState('');
-  const [anim, setAnim] = useState('')
+  //const [activate, setActivate] = useState('');
+  //const [anim, setAnim] = useState('')
 
   /*const flipCard = () => {
     console.log('activando')
