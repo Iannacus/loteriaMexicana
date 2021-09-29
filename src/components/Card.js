@@ -27,12 +27,12 @@ const CardContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
+  animation: ${(props) => props.anim};
 `;
 
 const FrontContent = styled.div`
   position: absolute;
-  transform: rotateY(180deg);
+  /*transform: rotateY(180deg);*/
   background-color: yellow;
   width: 100%;
   height: 100%;
@@ -53,7 +53,7 @@ const BackContent = styled.div`
 `;
 
 const CardText = styled.p`
-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
   letter-spacing: 1px;
   margin: 0;
   font-size: 36px;
@@ -63,31 +63,31 @@ transition: 1s ease-in-out;
 
 
 
-const Card = ({ number, name, next }) => {
+const Card = ({ number, name, next, used }) => {
 
   const [activate, setActivate] = useState('');
+  const [anim, setAnim] = useState('')
 
-  const flipCard = () => {
+  /*const flipCard = () => {
     console.log('activando')
     setActivate('rotateY(180deg)');
-  }
+    setAnim('travel 3s ease');
+  }*/
 
   return (
     <CardContainer trans={activate}>
-      <CardContent 
+      <CardContent anim={anim}
         onClick={() => 
           {
-            flipCard();
             next();
-            
           }
         }
       >
-        <BackContent></BackContent>
-        <FrontContent>
+        {used ? null : <BackContent />}
+        {used ? (<FrontContent>
           <CardText>{number}</CardText>
           <CardText align="center">{name}</CardText>
-        </FrontContent>
+        </FrontContent>) : null}
       </CardContent>
     </CardContainer>
   )

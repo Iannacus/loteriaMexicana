@@ -6,3 +6,16 @@ body {
   display: flex;
   justify-content: flex-start;
 }
+
+.space {
+  width: 50%;
+}
+
+@keyframes travel {
+  50%{
+    right: 0%;
+  }
+  100%{
+    right: 150%;
+  }
+}
