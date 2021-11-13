@@ -1,7 +1,7 @@
 import React from 'react';
 import { CardContainer, CardContent, CardText, FrontContent, BackContent } from './cards.styled';
 
-const Card = ({ number, name, next, used }) => {
+const Card = ({ number, name, onClickCard, used }) => {
 
   //const [activate, setActivate] = useState('');
   //const [anim, setAnim] = useState('')
@@ -17,7 +17,7 @@ const Card = ({ number, name, next, used }) => {
       <CardContent 
         onClick={() => 
           {
-            next();
+            onClickCard(true);
           }
         }
       >

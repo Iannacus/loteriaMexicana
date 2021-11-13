@@ -2,6 +2,7 @@ import './App.css';
 import {useState, useEffect} from 'react';
 import Card from './components/Card';
 import cards from './data'
+import CardCarousel from './components/Crousel';
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
   const [usedCards, setUsedCards] = useState([]);
   const [showCards, setShowCards] = useState(false);
   const [showUsedCards, setShowUsedCards] = useState(false);
+  const [showCarousel, setShowCarousel] = useState(false);
 
 
   const updateCard = () => {
@@ -53,14 +55,37 @@ function App() {
 
   }, [shuffleDeck]);
 
+  const showUsedCardCarousel = (value) => {
+    setShowCarousel(value);
+  }
+
   return (
     <div className="App">
+      {showCarousel ? 
+        <CardCarousel onClickClose={showUsedCardCarousel}>
+        {
+          usedCards.map((card, i) => {
+            return(
+              <Card
+                number={card.number}
+                name={card.name} 
+                onClickCard={() => {}}
+                used  
+                key={i}
+              />
+            )
+          })
+        }
+      </CardCarousel>
+      :
+      null
+      }
       <div className="space">
         {showCards 
           ? <Card
               number={shuffleDeck[arrayIndex].number}
               name={shuffleDeck[arrayIndex].name} 
-              next={updateCard}  
+              onClickCard={updateCard}  
             /> 
           : null
         }
@@ -70,13 +95,12 @@ function App() {
           ? <Card
               number={usedCards[arrayUsedIndex].number}
               name={usedCards[arrayUsedIndex].name} 
-              next={updateCard}
+              onClickCard={showUsedCardCarousel}
               used
             /> 
           : null
         } 
       </div>
-            
     </div>
   );
 }
