@@ -217,18 +217,18 @@ const cards = [
     //name: "La palma"
     name: "La maceta"
   },
-  {
-    number: 52,
-    name: "La maceta"
-  },
-  {
-    number: 53,
-    name: "El arpa"
-  },
-  {
-    number: 54,
-    name: "La rana"
-  },
+  // {
+  //   number: 52,
+  //   name: "La maceta"
+  // },
+  // {
+  //   number: 53,
+  //   name: "El arpa"
+  // },
+  // {
+  //   number: 54,
+  //   name: "La rana"
+  // },
 
 ]
 
