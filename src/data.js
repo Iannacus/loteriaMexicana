@@ -55,7 +55,8 @@ const cards = [
   },
   {
     number: 14,
-    name: "La muerte"
+    //name: "La muerte"
+    name: "El esqueleto"
   },
   {
     number: 15,
@@ -123,7 +124,8 @@ const cards = [
   },
   {
     number: 31,
-    name: "las jaras"
+    //name: "las jaras"
+    name: "Las flechas"
   },
   {
     number: 32,
@@ -151,7 +153,8 @@ const cards = [
   },
   {
     number: 38,
-    name: "El apache"
+    //name: "El apache"
+    name: "El indio"
   },
   {
     number: 39,
@@ -167,23 +170,28 @@ const cards = [
   },
   {
     number: 42,
-    name: "La calavera"
+    //name: "La calavera"
+    name: "La muerte"
   },
   {
     number: 43,
-    name: "La campana"
+    //name: "La campana"
+    name: "La jarra"
   },
   {
     number: 44,
-    name: "El cantarito"
-  },
-  {
-    number: 45,
+    //name: "El cantarito"
     name: "El venado"
   },
   {
-    number: 46,
+    number: 45,
+    //name: "El venado"
     name: "El sol"
+  },
+  {
+    number: 46,
+    //name: "El sol"
+    name: "La corona"
   },
   {
     number: 47,
@@ -191,19 +199,23 @@ const cards = [
   },
   {
     number: 48,
+    //name: "La chalupa"
     name: "La chalupa"
   },
   {
     number: 49,
-    name: "El pino"
-  },
-  {
-    number: 50,
+    //name: "El pino"
     name: "El pescado"
   },
   {
+    number: 50,
+    //name: "El pescado"
+    name: "La palmera"
+  },
+  {
     number: 51,
-    name: "La palma"
+    //name: "La palma"
+    name: "La maceta"
   },
   {
     number: 52,
