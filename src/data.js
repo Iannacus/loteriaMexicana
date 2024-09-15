@@ -195,12 +195,13 @@ const cards = [
   },
   {
     number: 47,
-    name: "La corona"
+    // name: "La corona"
+    name: "La chalupa"
   },
   {
     number: 48,
     //name: "La chalupa"
-    name: "La chalupa"
+    name: "El pino"
   },
   {
     number: 49,
